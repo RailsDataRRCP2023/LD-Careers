@@ -1,8 +1,26 @@
 Rails.application.routes.draw do
+  resources :indices
+  devise_for :customers
+  devise_for :payments
+  devise_for :order_items
+  devise_for :payment_methods
+  devise_for :orders
+  devise_for :products
+  devise_for :categories
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # resources :admin
+  # Index is the root path
+  resources :indices
+  root "indices#index"
+
+  # Resources
+  resources :categories
+  resources :products
+  resources :orders
+  resources :order_items
+  resources :payments
+  resources :payment_methods
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
