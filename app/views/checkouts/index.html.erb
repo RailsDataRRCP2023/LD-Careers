@@ -1,0 +1,51 @@
+<h1>Your Order</h1>
+
+<% subtotal = 0 %>
+
+<% @cart.each do |item| %>
+    <% product = item[1]['product'] %>
+    <p><b><%= product['name'] %></b></p>
+    <p><small><%= product['description'] %> </small></p>
+    <p><%= number_to_currency(product['price_cents'] / 100) %> x <%= item[1]['quantity'] %> = <%= number_to_currency(product['price_cents'] * item[1]['quantity'] / 100) %></p>
+    <hr>
+    <% subtotal += product['price_cents'] * item[1]['quantity'] %>
+<% end %>
+
+<hr><hr>
+<p><b>Subtotal:</b> <%= number_to_currency(subtotal / 100) %></p>
+<p>
+    <b>Province:</b>
+    <select id="province">
+        <% @taxes.each do |tax| %>
+            <option value="<%= tax['name'] %>" data-gst="<%= tax['gst'] %>" data-pst="<%= tax['pst'] %>"><%= tax['name'] %></option>
+        <% end %>
+    </select>
+</p>
+<p><b>GST:</b> $<span id="gst"></span></p>
+<p><b>PST:</b> $<span id="pst"></span></p>
+<p><b>Total:</b> $<span id="total"></span> CAD</p>
+
+<script>
+    function calculateTotal() {
+        const province = document.getElementById('province').value;
+        const gst = document.querySelector(`option[value="${province}"]`).dataset.gst;
+        const pst = document.querySelector(`option[value="${province}"]`).dataset.pst;
+        const subtotal = <%= subtotal %>;
+        const gstAmount = subtotal * gst;
+        const pstAmount = subtotal * pst;
+        const total = parseFloat(subtotal) + parseFloat(gstAmount) + parseFloat(pstAmount);
+        document.getElementById('gst').innerHTML = gstAmount.toFixed(2);
+        document.getElementById('pst').innerHTML = pstAmount.toFixed(2);
+        document.getElementById('total').innerHTML = total.toFixed(2);
+    }
+
+    document.getElementById('province').addEventListener('change', function(event) {
+        calculateTotal();
+    });
+
+    calculateTotal();
+</script>
+
+<%= form_with url:checkout_create_path(1), remote: false do %>
+    <%= button_tag '💳 Buy Now' %>
+<% end %>

@@ -1,0 +1,14 @@
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>
+  <h2>
+    <%= link_to category.name, category %>
+  </h2>
+    <p><%= category.description %></p>
+    <ul>
+      <% category.products.each do |product| %>
+        <%= render partial: 'products/product', locals: { product: product } %>
+      <% end %>
+    </ul>
+    <br><br>
+<% end %>

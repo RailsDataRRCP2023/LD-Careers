@@ -1,10 +1,11 @@
 class Payment < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  has_many :orders
 
   def self.ransackable_attributes(auth_object = nil)
-    ["amount_cents", "created_at", "id", "id_value", "order_id", "payment_method_id", "status", "updated_at"]
+    ["created_at", "id", "id_value", "payment_method_id", "status", "total_cents", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
   end
 end

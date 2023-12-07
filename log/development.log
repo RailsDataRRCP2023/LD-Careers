@@ -1,59 +1,59 @@
 DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
-  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
   [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
-  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-11-28 15:31:17.647582', '2023-11-28 15:31:17.647585') RETURNING "key"[0m
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-12-07 16:28:06.572581', '2023-12-07 16:28:06.572587') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to DeviseCreateAdminUsers (20231128013521)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
-  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128013521') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateActiveAdminComments (20231128013523)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_type" varchar, "resource_id" integer, "author_type" varchar, "author_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_type" varchar, "resource_id" integer, "author_type" varchar, "author_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128013523') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreateCategories (20231128022729)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_categories_on_name" ON "categories" ("name")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022729') RETURNING "version"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022729') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreateProducts (20231128022809)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "image_url" varchar DEFAULT '' NOT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "image_url" varchar DEFAULT '' NOT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
 FOREIGN KEY ("category_id")
   REFERENCES "categories" ("id")
 )[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_name" ON "products" ("name")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022809') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreateOrders (20231128022816)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "total_price_cents" integer DEFAULT 0 NOT NULL, "customer_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3dad120da9"
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "total_price_cents" integer DEFAULT 0 NOT NULL, "customer_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3dad120da9"
 FOREIGN KEY ("customer_id")
   REFERENCES "customers" ("id")
 )[0m
-  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_customer_id" ON "orders" ("customer_id")[0m
-  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_status" ON "orders" ("status")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022816') RETURNING "version"[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_customer_id" ON "orders" ("customer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_status" ON "orders" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022816') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreatePaymentMethods (20231128022828)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "payment_methods" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "payment_methods" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_payment_methods_on_name" ON "payment_methods" ("name")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022828') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreateOrderItems (20231128022839)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "product_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f1a29ddd47"
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "product_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f1a29ddd47"
 FOREIGN KEY ("product_id")
   REFERENCES "products" ("id")
 , CONSTRAINT "fk_rails_e3cb28f071"
@@ -64,10 +64,10 @@ FOREIGN KEY ("order_id")
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_order_items_on_quantity" ON "order_items" ("quantity")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022839') RETURNING "version"[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreatePayments (20231128022846)
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "amount_cents" integer DEFAULT 0 NOT NULL, "payment_method_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d384ec1ebf"
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "amount_cents" integer DEFAULT 0 NOT NULL, "payment_method_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d384ec1ebf"
 FOREIGN KEY ("payment_method_id")
   REFERENCES "payment_methods" ("id")
 , CONSTRAINT "fk_rails_6af949464b"
@@ -77,11 +77,11 @@ FOREIGN KEY ("order_id")
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_payments_on_payment_method_id" ON "payments" ("payment_method_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_payments_on_order_id" ON "payments" ("order_id")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_payments_on_status" ON "payments" ("status")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022846') RETURNING "version"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022846') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to DeviseCreateCustomers (20231128023755)
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "customers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "customers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_customers_on_email" ON "customers" ("email")[0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_customers_on_reset_password_token" ON "customers" ("reset_password_token")[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128023755') RETURNING "version"[0m
@@ -91,210 +91,148 @@ Migrating to CreateStoreInfos (20231128151139)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "store_infos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "about" text, "address" varchar, "phone" varchar, "email" varchar, "logo_url" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128151139') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mAdminUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = ? LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
-  [1m[36mAdminUser Create (0.1ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-11-28 15:31:20.163889"], ["updated_at", "2023-11-28 15:31:20.163889"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mStoreInfo Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "store_infos" WHERE "store_infos"."name" = ? LIMIT ?[0m  [["name", "Job Board"], ["LIMIT", 1]]
-  [1m[36mStoreInfo Create (0.1ms)[0m  [1m[32mINSERT INTO "store_infos" ("name", "about", "address", "phone", "email", "logo_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Board"], ["about", "Job Board is a job board website that allows employers to post job listings for a fee. Job seekers can search for jobs and apply to them directly on the website."], ["address", "123 Main St San Francisco CA 94105"], ["phone", "415-555-5555"], ["email", "a@b.c"], ["logo_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["created_at", "2023-11-28 15:31:20.186940"], ["updated_at", "2023-11-28 15:31:20.186940"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Job Posting"], ["LIMIT", 1]]
-  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting"], ["description", "A job posting is a job advertisement created by an employer or their representative to advertise open positions within a company. Job postings can be found on a company’s career page or job board. They are typically created by the employer’s hiring manager or a recruiter who is tasked with filling open positions within the company."], ["created_at", "2023-11-28 15:31:20.197247"], ["updated_at", "2023-11-28 15:31:20.197247"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Job Application"], ["LIMIT", 1]]
-  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Application"], ["description", "A job application is a form that employers ask job seekers to fill out to learn about their work history. Job applications are typically comprised of several sections and fields to allow employers to collect the information they need to make an informed decision."], ["created_at", "2023-11-28 15:31:20.200919"], ["updated_at", "2023-11-28 15:31:20.200919"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Quarterly Analytics"], ["LIMIT", 1]]
-  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Quarterly Analytics"], ["description", "Quarterly analytics are a set of metrics that measure a company’s performance over a three-month period. Quarterly analytics are often used to compare a company’s performance to previous quarters or to the same quarter in previous years."], ["created_at", "2023-11-28 15:31:20.204388"], ["updated_at", "2023-11-28 15:31:20.204388"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Monthly Analytics"], ["LIMIT", 1]]
-  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Monthly Analytics"], ["description", "Monthly analytics are a set of metrics that measure a company’s performance over a one-month period. Monthly analytics are often used to compare a company’s performance to previous months or to the same month in previous years."], ["created_at", "2023-11-28 15:31:20.209015"], ["updated_at", "2023-11-28 15:31:20.209015"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics"], ["LIMIT", 1]]
-  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics"], ["description", "Weekly analytics are a set of metrics that measure a company’s performance over a one-week period. Weekly analytics are often used to compare a company’s performance to previous weeks or to the same week in previous years."], ["created_at", "2023-11-28 15:31:20.213848"], ["updated_at", "2023-11-28 15:31:20.213848"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Job Posting 1"], ["LIMIT", 1]]
-  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting 1"], ["description", "Job Posting 1"], ["price_cents", 1100], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-11-28 15:31:20.240363"], ["updated_at", "2023-11-28 15:31:20.240363"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Job Posting 2"], ["LIMIT", 1]]
-  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting 2"], ["description", "Job Posting 2"], ["price_cents", 1200], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-11-28 15:31:20.245351"], ["updated_at", "2023-11-28 15:31:20.245351"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Job Posting 3"], ["LIMIT", 1]]
-  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting 3"], ["description", "Job Posting 3"], ["price_cents", 1300], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-11-28 15:31:20.250231"], ["updated_at", "2023-11-28 15:31:20.250231"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Job Posting 4"], ["LIMIT", 1]]
-  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting 4"], ["description", "Job Posting 4"], ["price_cents", 1400], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-11-28 15:31:20.255408"], ["updated_at", "2023-11-28 15:31:20.255408"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Job Posting 5"], ["LIMIT", 1]]
-  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting 5"], ["description", "Job Posting 5"], ["price_cents", 1500], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-11-28 15:31:20.261699"], ["updated_at", "2023-11-28 15:31:20.261699"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
-Started GET "/admin/dashboard" for 172.17.0.1 at 2023-11-28 15:32:39 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by Admin::DashboardController#index as HTML
-Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms | Allocations: 4052)
-
-
-Started GET "/admin/login" for 172.17.0.1 at 2023-11-28 15:32:39 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by ActiveAdmin::Devise::SessionsController#new as HTML
-  Rendering layout vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb
-  Rendering vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
-  Rendered vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/shared/_links.erb (Duration: 3.7ms | Allocations: 712)
-  Rendered vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 28.1ms | Allocations: 12163)
-  Rendered layout vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 919.4ms | Allocations: 280943)
-Completed 200 OK in 969ms (Views: 929.6ms | ActiveRecord: 1.7ms | Allocations: 301146)
-
-
-Started POST "/admin/login" for 172.17.0.1 at 2023-11-28 15:32:44 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by ActiveAdmin::Devise::SessionsController#create as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
-  [1m[36mAdminUser Load (0.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
-Redirected to http://127.0.0.1:3000/admin/dashboard
-Completed 303 See Other in 215ms (ActiveRecord: 0.2ms | Allocations: 8553)
-
-
-Started GET "/admin/dashboard" for 172.17.0.1 at 2023-11-28 15:32:45 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Admin::DashboardController#index as HTML
-  [1m[36mAdminUser Load (0.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb
-  Rendered vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb (Duration: 27.5ms | Allocations: 18184)
-Completed 200 OK in 38ms (Views: 28.8ms | ActiveRecord: 0.2ms | Allocations: 21742)
-
-
-Started GET "/admin/store_infos" for 172.17.0.1 at 2023-11-28 15:32:54 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Admin::StoreInfosController#index as HTML
-  [1m[36mAdminUser Load (0.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/resource/index.html.arb
-  [1m[36mStoreInfo Load (0.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" desc LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
-  Rendered vendor/cache/ruby/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/resource/index.html.arb (Duration: 90.9ms | Allocations: 47269)
-Completed 200 OK in 103ms (Views: 93.6ms | ActiveRecord: 0.7ms | Allocations: 51944)
-
-
-Started GET "/" for 172.17.0.1 at 2023-11-28 15:45:28 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 304)
-Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 1334)
-
-
-Started GET "/" for 172.17.0.1 at 2023-11-28 15:45:28 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 15)
-Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 243)
-
-
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
-Started GET "/" for 172.17.0.1 at 2023-11-28 15:46:54 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-        bin/rails db:migrate
-
-You have 1 pending migration:
-
-db/migrate/20231128154648_create_indices.rb
-
-
-):
-  
-activerecord (7.1.2) lib/active_record/migration.rb:754:in `check_pending_migrations'
-activerecord (7.1.2) lib/active_record/migration.rb:643:in `block (2 levels) in call'
-activesupport (7.1.2) lib/active_support/file_update_checker.rb:85:in `execute'
-activesupport (7.1.2) lib/active_support/file_update_checker.rb:95:in `execute_if_updated'
-activerecord (7.1.2) lib/active_record/migration.rb:650:in `block in call'
-activerecord (7.1.2) lib/active_record/migration.rb:640:in `synchronize'
-activerecord (7.1.2) lib/active_record/migration.rb:640:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-activesupport (7.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
-railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
-activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
-activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
-activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
-railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
-rack (3.0.8) lib/rack/method_override.rb:28:in `call'
-rack (3.0.8) lib/rack/runtime.rb:24:in `call'
-activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
-actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
-actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
-rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
-actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
-railties (7.1.2) lib/rails/engine.rb:529:in `call'
-puma (6.4.0) lib/puma/configuration.rb:272:in `call'
-puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
-puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
-puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
-puma (6.4.0) lib/puma/server.rb:443:in `process_client'
-puma (6.4.0) lib/puma/server.rb:241:in `block in run'
-puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
-Started POST "/rails/actions" for 172.17.0.1 at 2023-11-28 15:46:58 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateIndices (20231128154648)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "indices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128154648') RETURNING "version"[0m
-  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "indices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128154648') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProvinceTaxes (20231128154649)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "province_taxes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "gst" decimal(10,5), "pst" decimal(10,5), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128154649') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for 172.17.0.1 at 2023-11-28 15:46:58 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by Rails::WelcomeController#index as HTML
-  Rendering vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered vendor/cache/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 301)
-Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 1228)
-
-
-Started GET "/index" for 172.17.0.1 at 2023-11-28 15:47:02 +0000
-Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  
-ActionController::RoutingError (No route matches [GET] "/index"):
-  
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdminUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = ? LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (0.2ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-12-07 16:28:09.768100"], ["updated_at", "2023-12-07 16:28:09.768100"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStoreInfo Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "store_infos" WHERE "store_infos"."name" = ? LIMIT ?[0m  [["name", "LD Careers"], ["LIMIT", 1]]
+  [1m[36mStoreInfo Create (0.3ms)[0m  [1m[32mINSERT INTO "store_infos" ("name", "about", "address", "phone", "email", "logo_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "LD Careers"], ["about", "Job Board is a job board website that allows employers to post job listings for a fee. Job seekers can search for jobs and apply to them directly on the website."], ["address", "123 Main St San Francisco CA 94105"], ["phone", "415-555-5555"], ["email", "a@b.c"], ["logo_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["created_at", "2023-12-07 16:28:09.801040"], ["updated_at", "2023-12-07 16:28:09.801040"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Job Posting"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting"], ["description", "A job posting is a job advertisement created by an employer or their representative to advertise open positions within a company. Job postings can be found on a company’s career page or job board. They are typically created by the employer’s hiring manager or a recruiter who is tasked with filling open positions within the company."], ["created_at", "2023-12-07 16:28:09.817634"], ["updated_at", "2023-12-07 16:28:09.817634"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Quarterly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Quarterly Analytics"], ["description", "Quarterly analytics are a set of metrics that measure a company’s performance over a three-month period. Quarterly analytics are often used to compare a company’s performance to previous quarters or to the same quarter in previous years."], ["created_at", "2023-12-07 16:28:09.826192"], ["updated_at", "2023-12-07 16:28:09.826192"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Monthly Analytics"], ["description", "Monthly analytics are a set of metrics that measure a company’s performance over a one-month period. Monthly analytics are often used to compare a company’s performance to previous months or to the same month in previous years."], ["created_at", "2023-12-07 16:28:09.831625"], ["updated_at", "2023-12-07 16:28:09.831625"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (3.9ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics"], ["description", "Weekly analytics are a set of metrics that measure a company’s performance over a one-week period. Weekly analytics are often used to compare a company’s performance to previous weeks or to the same week in previous years."], ["created_at", "2023-12-07 16:28:09.840052"], ["updated_at", "2023-12-07 16:28:09.840052"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Software Developer"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Software Developer"], ["description", "Software developers design, code, and test computer programs, applications, and systems. They collaborate with teams to create software solutions that meet the needs of users and businesses."], ["price_cents", 1100], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-07 16:28:09.885445"], ["updated_at", "2023-12-07 16:28:09.885445"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Data Scientist"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Data Scientist"], ["description", "Data scientists analyze and interpret complex data sets to inform business decision-making. They utilize statistical techniques and machine learning algorithms to extract valuable insights and patterns from large volumes of data."], ["price_cents", 1200], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-07 16:28:09.893519"], ["updated_at", "2023-12-07 16:28:09.893519"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Network Administrator"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Network Administrator"], ["description", "Network administrators are responsible for maintaining and managing an organization's computer networks. They ensure network stability, troubleshoot connectivity issues, and implement security measures to safeguard against cyber threats."], ["price_cents", 1300], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-07 16:28:09.900316"], ["updated_at", "2023-12-07 16:28:09.900316"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Cybersecurity Analyst"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Cybersecurity Analyst"], ["description", "Cybersecurity analysts protect an organization's computer systems and networks from security breaches. They monitor for suspicious activities, implement security measures, and respond to incidents to safeguard sensitive information."], ["price_cents", 1400], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-07 16:28:09.909728"], ["updated_at", "2023-12-07 16:28:09.909728"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (2.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Database Administrator"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Database Administrator"], ["description", "Database administrators manage and organize data using specialized software. They design, implement, and maintain databases to ensure efficient data storage, retrieval, and integrity for various applications and systems."], ["price_cents", 1500], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-07 16:28:09.920716"], ["updated_at", "2023-12-07 16:28:09.920716"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (2.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "2023 Q1 Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "2023 Q1 Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 2100], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 2], ["created_at", "2023-12-07 16:28:09.931450"], ["updated_at", "2023-12-07 16:28:09.931450"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (3.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "2023 Q2 Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "2023 Q2 Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 2200], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 2], ["created_at", "2023-12-07 16:28:09.946450"], ["updated_at", "2023-12-07 16:28:09.946450"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Nov 2023 Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nov 2023 Monthly Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 3100], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 3], ["created_at", "2023-12-07 16:28:09.964753"], ["updated_at", "2023-12-07 16:28:09.964753"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Dec 2023 Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Dec 2023 Monthly Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 3200], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 3], ["created_at", "2023-12-07 16:28:09.974669"], ["updated_at", "2023-12-07 16:28:09.974669"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics Nov 17-23 2023"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics Nov 17-23 2023"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 4100], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 4], ["created_at", "2023-12-07 16:28:09.989768"], ["updated_at", "2023-12-07 16:28:09.989768"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (6.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics Nov 24-30 2023"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics Nov 24-30 2023"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 4200], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 4], ["created_at", "2023-12-07 16:28:10.005644"], ["updated_at", "2023-12-07 16:28:10.005644"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Alberta"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.6ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Alberta"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-07 16:28:10.031476"], ["updated_at", "2023-12-07 16:28:10.031476"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "British Columbia"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "British Columbia"], ["gst", 0.05], ["pst", 0.07], ["created_at", "2023-12-07 16:28:10.043189"], ["updated_at", "2023-12-07 16:28:10.043189"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Manitoba"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Manitoba"], ["gst", 0.05], ["pst", 0.07], ["created_at", "2023-12-07 16:28:10.049948"], ["updated_at", "2023-12-07 16:28:10.049948"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "New Brunswick"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "New Brunswick"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-07 16:28:10.053912"], ["updated_at", "2023-12-07 16:28:10.053912"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Newfoundland and Labrador"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Newfoundland and Labrador"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-07 16:28:10.059173"], ["updated_at", "2023-12-07 16:28:10.059173"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Northwest Territories"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Northwest Territories"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-07 16:28:10.065615"], ["updated_at", "2023-12-07 16:28:10.065615"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Nova Scotia"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nova Scotia"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-07 16:28:10.070402"], ["updated_at", "2023-12-07 16:28:10.070402"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Nunavut"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nunavut"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-07 16:28:10.076581"], ["updated_at", "2023-12-07 16:28:10.076581"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Ontario"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Ontario"], ["gst", 0.05], ["pst", 0.08], ["created_at", "2023-12-07 16:28:10.081777"], ["updated_at", "2023-12-07 16:28:10.081777"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Prince Edward Island"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Prince Edward Island"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-07 16:28:10.086542"], ["updated_at", "2023-12-07 16:28:10.086542"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Quebec"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Quebec"], ["gst", 0.05], ["pst", 0.09975], ["created_at", "2023-12-07 16:28:10.093262"], ["updated_at", "2023-12-07 16:28:10.093262"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Saskatchewan"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.2ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Saskatchewan"], ["gst", 0.05], ["pst", 0.06], ["created_at", "2023-12-07 16:28:10.109076"], ["updated_at", "2023-12-07 16:28:10.109076"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Yukon"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.2ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Yukon"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-07 16:28:10.119491"], ["updated_at", "2023-12-07 16:28:10.119491"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)

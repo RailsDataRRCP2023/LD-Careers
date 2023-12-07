@@ -1,10 +1,13 @@
 class Order < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  belongs_to :customer
+  belongs_to :payment
+  has_many :order_items
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "customer_id", "id", "id_value", "status", "total_price_cents", "updated_at"]
+    ["created_at", "id", "id_value", "payment_method_id", "status", "total_cents", "updated_at", "customer_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["customer", "payment", "order_items"]
   end
 end
