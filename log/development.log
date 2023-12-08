@@ -298,3 +298,142 @@ Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.2
   
 ActionController::RoutingError (No route matches [GET] "/index"):
   
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-12-05 15:40:13 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 218.1ms | Allocations: 15744)
+  Rendered layout layouts/application.html.erb (Duration: 10634.1ms | Allocations: 286817)
+Completed 200 OK in 11430ms (Views: 10786.7ms | ActiveRecord: 88.5ms | Allocations: 310441)
+
+
+Started GET "/" for ::1 at 2023-12-08 15:35:54 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (69.3ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (7.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 45.0ms | Allocations: 2179)
+  Rendered layout layouts/application.html.erb (Duration: 240.4ms | Allocations: 6601)
+Completed 200 OK in 401ms (Views: 240.4ms | ActiveRecord: 111.9ms | Allocations: 8013)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-08 15:47:21 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 152.8ms | Allocations: 15038)
+  Rendered layout layouts/application.html.erb (Duration: 3779.1ms | Allocations: 80517)
+Completed 200 OK in 4328ms (Views: 3871.7ms | ActiveRecord: 104.8ms | Allocations: 101371)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-08 15:47:32 -0600
+  
+ActionController::RoutingError (uninitialized constant CategoriesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  CategoryController
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for 127.0.0.1 at 2023-12-08 15:47:38 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2237)
+  Rendered layout layouts/application.html.erb (Duration: 131.2ms | Allocations: 6710)
+Completed 200 OK in 154ms (Views: 131.5ms | ActiveRecord: 2.4ms | Allocations: 7788)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2023-12-08 15:47:40 -0600
+  
+ActionController::RoutingError (uninitialized constant CategoriesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  CategoryController
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for 127.0.0.1 at 2023-12-08 15:47:53 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2125)
+  Rendered layout layouts/application.html.erb (Duration: 112.3ms | Allocations: 6412)
+Completed 200 OK in 135ms (Views: 112.3ms | ActiveRecord: 2.3ms | Allocations: 7358)
+
+
+Started GET "/categories/5" for 127.0.0.1 at 2023-12-08 15:48:03 -0600
+  
+ActionController::RoutingError (uninitialized constant CategoriesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  CategoryController
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/categories/5" for 127.0.0.1 at 2023-12-08 16:17:44 -0600
+  
+ActionController::RoutingError (uninitialized constant CategoriesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  CategoryController
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for 127.0.0.1 at 2023-12-08 16:17:49 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (51.5ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:9:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:46
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:55
+  Rendered indices/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2203)
+  Rendered layout layouts/application.html.erb (Duration: 1907.5ms | Allocations: 29012)
+Completed 200 OK in 1984ms (Views: 1906.0ms | ActiveRecord: 96.6ms | Allocations: 30284)
+
+
