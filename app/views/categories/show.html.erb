@@ -1,0 +1,8 @@
+<h1><%= @category.name %></h1>
+<p><%= @category.description %></p>
+<h3>Products</h3>
+<ul>
+  <% @category.products.each do |product| %>
+    <%= render partial: 'products/product', locals: { product: product } %>
+  <% end %>
+</ul>

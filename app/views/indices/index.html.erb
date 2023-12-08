@@ -1,70 +1,29 @@
-<p style="color: green"><%= notice %></p>
 
-<nav class="navbar navbar-expand-lg bg-primary-subtle">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><%= @store_info['name'] %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cart
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<div class="col-12 col-md-8">
+  <h1><%= @store_info['name'] %></h1>
+  <p><%= @store_info['about'] %></p>
 
-<div class="container">
+  <h2>Contact</h2>
+  <p>Address: <%= @store_info['address'] %></p>
+  <p>Phone: <%= @store_info['phone'] %></p>
+  <p>Email: <%= @store_info['email'] %></p>
+</div>
+
+<div class="col-12 col-md-4">
+  <h2><a href="<%= categories_path %>">All Categories</a></h2>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-12">
+  <h2><a href="<%= products_path %>">Products</a></h2>
   <div class="row">
-    <div class="col-12 col-md-8">
-      <h1><%= @store_info['name'] %></h1>
-      <p><%= @store_info['about'] %></p>
-
-      <h2>Contact</h2>
-      <p>Address: <%= @store_info['address'] %></p>
-      <p>Phone: <%= @store_info['phone'] %></p>
-      <p>Email: <%= @store_info['email'] %></p>
-    </div>
-
-    <div class="col-12 col-md-4">
-      <h2>Categories</h2>
-      <ul>
-        <% @categories.each do |category| %>
-          <li><%= link_to category.name, category_path(category) %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="col-12">
-      <h2>Products</h2>
-      <div class="row">
-        <% @products.each do |product| %>
-          <div class="col-12 col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><%= product.name %></h5>
-                <p class="card-text"><%= product.description %></p>
-                <p class="card-text"><%= number_to_currency(product.price_cents / 100) %></p>
-                <%# <%= link_to 'Add to cart', add_to_cart_path(product), method: :post, class: 'btn btn-primary' %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+    <% @products.each do |product| %>
+      <%= render partial: 'products/product', locals: { product: product } %>
+    <% end %>
   </div>
 </div>
 
