@@ -3,11 +3,7 @@
   <h1><%= @store_info['name'] %></h1>
   <p><%= @store_info['about'] %></p>
 
-  <h2>Contact</h2>
-  <p>Address: <%= @store_info['address'] %></p>
-  <p>Phone: <%= @store_info['phone'] %></p>
-  <p>Email: <%= @store_info['email'] %></p>
-</div>
+  
 
 <div class="col-12 col-md-4">
   <h2><a href="<%= categories_path %>">All Categories</a></h2>
@@ -24,6 +20,17 @@
     <% @products.each do |product| %>
       <%= render partial: 'products/product', locals: { product: product } %>
     <% end %>
+  </div>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Contact
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Address: <%= @store_info['address'] %></li>
+    <li class="list-group-item">Phone: <%= @store_info['phone'] %></li>
+    <li class="list-group-item">Email: <%= @store_info['email'] %></li>
+  </ul>
+</div>
   </div>
 </div>
 

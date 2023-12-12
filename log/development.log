@@ -389,3 +389,1447 @@ Completed 200 OK in 1984ms (Views: 1906.0ms | ActiveRecord: 96.6ms | Allocations
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
 DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /usr/src/app/config/environment.rb:5)
 >>>>>>> f983d80fa11b042b34fff11b165e62e8230127ff
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (2.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-12-09 23:25:43.781615', '2023-12-09 23:25:43.781620') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateAdminUsers (20231128013521)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128013521') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveAdminComments (20231128013523)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_type" varchar, "resource_id" integer, "author_type" varchar, "author_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128013523') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateCategories (20231128022729)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_categories_on_name" ON "categories" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022729') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateProducts (20231128022809)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "image_url" varchar DEFAULT '' NOT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_name" ON "products" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022809') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateOrders (20231128022816)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "total_price_cents" integer DEFAULT 0 NOT NULL, "customer_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3dad120da9"
+FOREIGN KEY ("customer_id")
+  REFERENCES "customers" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_customer_id" ON "orders" ("customer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_status" ON "orders" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022816') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreatePaymentMethods (20231128022828)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "payment_methods" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_payment_methods_on_name" ON "payment_methods" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateOrderItems (20231128022839)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "quantity" integer DEFAULT 0 NOT NULL, "price_cents" integer DEFAULT 0 NOT NULL, "product_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f1a29ddd47"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_e3cb28f071"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_order_items_on_product_id" ON "order_items" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_order_items_on_order_id" ON "order_items" ("order_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_order_items_on_quantity" ON "order_items" ("quantity")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022839') RETURNING "version"[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreatePayments (20231128022846)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar DEFAULT 'pending' NOT NULL, "amount_cents" integer DEFAULT 0 NOT NULL, "payment_method_id" integer NOT NULL, "order_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d384ec1ebf"
+FOREIGN KEY ("payment_method_id")
+  REFERENCES "payment_methods" ("id")
+, CONSTRAINT "fk_rails_6af949464b"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_payments_on_payment_method_id" ON "payments" ("payment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_payments_on_order_id" ON "payments" ("order_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_payments_on_status" ON "payments" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128022846') RETURNING "version"[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateCustomers (20231128023755)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "customers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_customers_on_email" ON "customers" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_customers_on_reset_password_token" ON "customers" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128023755') RETURNING "version"[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateStoreInfos (20231128151139)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "store_infos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "about" text, "address" varchar, "phone" varchar, "email" varchar, "logo_url" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128151139') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIndices (20231128154648)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "indices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128154648') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProvinceTaxes (20231128154649)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "province_taxes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "gst" decimal(10,5), "pst" decimal(10,5), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231128154649') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:07:55 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  Rendered indices/index.html.erb within layouts/application (Duration: 32.8ms | Allocations: 2512)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 2643)
+Completed 500 Internal Server Error in 622ms (ActiveRecord: 81.7ms | Allocations: 11631)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass
+
+  <h1>'.freeze; @output_buffer.append=( @store_info['name'] ); @output_buffer.safe_append='</h1>
+                                                   ^^^^^^^^):
+    1: 
+    2: <div class="col-12 col-md-8">
+    3:   <h1><%= @store_info['name'] %></h1>
+    4:   <p><%= @store_info['about'] %></p>
+    5: 
+    6:   <h2>Contact</h2>
+  
+app/views/indices/index.html.erb:3
+Started GET "/admin" for 127.0.0.1 at 2023-12-10 17:08:05 -0600
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+Completed 401 Unauthorized in 33ms (ActiveRecord: 1.0ms | Allocations: 1381)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2023-12-10 17:08:06 -0600
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/shared/_links.erb (Duration: 1.9ms | Allocations: 706)
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 106.1ms | Allocations: 10545)
+  Rendered layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 4494.6ms | Allocations: 77816)
+Completed 200 OK in 4606ms (Views: 4506.7ms | ActiveRecord: 4.9ms | Allocations: 92697)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2023-12-10 17:09:00 -0600
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 87ms (ActiveRecord: 2.0ms | Allocations: 4061)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mCACHE StoreInfo Load (0.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.6ms | Allocations: 156)
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 6.9ms | Allocations: 6254)
+  Rendered layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 582.7ms | Allocations: 16755)
+Completed 200 OK in 981ms (Views: 585.7ms | ActiveRecord: 0.0ms | Allocations: 18591)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2023-12-10 17:09:13 -0600
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 38ms (ActiveRecord: 2.2ms | Allocations: 2414)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mCACHE StoreInfo Load (0.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.6ms | Allocations: 138)
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 7.1ms | Allocations: 5555)
+  Rendered layout /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 476.1ms | Allocations: 15937)
+Completed 200 OK in 808ms (Views: 478.9ms | ActiveRecord: 0.0ms | Allocations: 16968)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdminUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = ? LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (0.5ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-12-10 23:09:56.499876"], ["updated_at", "2023-12-10 23:09:56.499876"]]
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStoreInfo Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "store_infos" WHERE "store_infos"."name" = ? LIMIT ?[0m  [["name", "LD Careers"], ["LIMIT", 1]]
+  [1m[36mStoreInfo Create (0.5ms)[0m  [1m[32mINSERT INTO "store_infos" ("name", "about", "address", "phone", "email", "logo_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "LD Careers"], ["about", "Job Board is a job board website that allows employers to post job listings for a fee. Job seekers can search for jobs and apply to them directly on the website."], ["address", "123 Main St San Francisco CA 94105"], ["phone", "415-555-5555"], ["email", "a@b.c"], ["logo_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["created_at", "2023-12-10 23:09:56.573533"], ["updated_at", "2023-12-10 23:09:56.573533"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Job Posting"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Job Posting"], ["description", "A job posting is a job advertisement created by an employer or their representative to advertise open positions within a company. Job postings can be found on a company’s career page or job board. They are typically created by the employer’s hiring manager or a recruiter who is tasked with filling open positions within the company."], ["created_at", "2023-12-10 23:09:56.596484"], ["updated_at", "2023-12-10 23:09:56.596484"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Quarterly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Quarterly Analytics"], ["description", "Quarterly analytics are a set of metrics that measure a company’s performance over a three-month period. Quarterly analytics are often used to compare a company’s performance to previous quarters or to the same quarter in previous years."], ["created_at", "2023-12-10 23:09:56.608318"], ["updated_at", "2023-12-10 23:09:56.608318"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Monthly Analytics"], ["description", "Monthly analytics are a set of metrics that measure a company’s performance over a one-month period. Monthly analytics are often used to compare a company’s performance to previous months or to the same month in previous years."], ["created_at", "2023-12-10 23:09:56.619585"], ["updated_at", "2023-12-10 23:09:56.619585"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics"], ["description", "Weekly analytics are a set of metrics that measure a company’s performance over a one-week period. Weekly analytics are often used to compare a company’s performance to previous weeks or to the same week in previous years."], ["created_at", "2023-12-10 23:09:56.632137"], ["updated_at", "2023-12-10 23:09:56.632137"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Software Developer"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Software Developer"], ["description", "Software developers design, code, and test computer programs, applications, and systems. They collaborate with teams to create software solutions that meet the needs of users and businesses."], ["price_cents", 1100], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-10 23:09:56.773725"], ["updated_at", "2023-12-10 23:09:56.773725"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (3.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Data Scientist"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Data Scientist"], ["description", "Data scientists analyze and interpret complex data sets to inform business decision-making. They utilize statistical techniques and machine learning algorithms to extract valuable insights and patterns from large volumes of data."], ["price_cents", 1200], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-10 23:09:56.788960"], ["updated_at", "2023-12-10 23:09:56.788960"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (3.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Network Administrator"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Network Administrator"], ["description", "Network administrators are responsible for maintaining and managing an organization's computer networks. They ensure network stability, troubleshoot connectivity issues, and implement security measures to safeguard against cyber threats."], ["price_cents", 1300], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-10 23:09:56.806396"], ["updated_at", "2023-12-10 23:09:56.806396"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Cybersecurity Analyst"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Cybersecurity Analyst"], ["description", "Cybersecurity analysts protect an organization's computer systems and networks from security breaches. They monitor for suspicious activities, implement security measures, and respond to incidents to safeguard sensitive information."], ["price_cents", 1400], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-10 23:09:56.822739"], ["updated_at", "2023-12-10 23:09:56.822739"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Database Administrator"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Database Administrator"], ["description", "Database administrators manage and organize data using specialized software. They design, implement, and maintain databases to ensure efficient data storage, retrieval, and integrity for various applications and systems."], ["price_cents", 1500], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 1], ["created_at", "2023-12-10 23:09:56.847680"], ["updated_at", "2023-12-10 23:09:56.847680"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "2023 Q1 Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "2023 Q1 Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 2100], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 2], ["created_at", "2023-12-10 23:09:56.864391"], ["updated_at", "2023-12-10 23:09:56.864391"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "2023 Q2 Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "2023 Q2 Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 2200], ["quantity", 0], ["image_url", "https://images.unsplash.com/photo-1612835365542-0e9a4b6e7b8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8am9iJTIwcG9zdGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"], ["category_id", 2], ["created_at", "2023-12-10 23:09:56.880535"], ["updated_at", "2023-12-10 23:09:56.880535"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (3.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Nov 2023 Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nov 2023 Monthly Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 3100], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 3], ["created_at", "2023-12-10 23:09:56.896674"], ["updated_at", "2023-12-10 23:09:56.896674"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Dec 2023 Monthly Analytics"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Dec 2023 Monthly Analytics"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 3200], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 3], ["created_at", "2023-12-10 23:09:56.915360"], ["updated_at", "2023-12-10 23:09:56.915360"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (4.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics Nov 17-23 2023"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics Nov 17-23 2023"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 4100], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 4], ["created_at", "2023-12-10 23:09:56.931147"], ["updated_at", "2023-12-10 23:09:56.931147"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (3.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "Weekly Analytics Nov 24-30 2023"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price_cents", "quantity", "image_url", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Weekly Analytics Nov 24-30 2023"], ["description", "Job/career analytics involves the use of data analysis and statistical methods to gain insights into various aspects of the job market and career trends. Professionals in this field utilize data-driven approaches to understand employment patterns, skill requirements, and industry trends, helping organizations and individuals make informed decisions about career development and workforce planning."], ["price_cents", 4200], ["quantity", 0], ["image_url", "https://www.entrepreneur.com/article/364823"], ["category_id", 4], ["created_at", "2023-12-10 23:09:56.947420"], ["updated_at", "2023-12-10 23:09:56.947420"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Alberta"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Alberta"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-10 23:09:56.979090"], ["updated_at", "2023-12-10 23:09:56.979090"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "British Columbia"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "British Columbia"], ["gst", 0.05], ["pst", 0.07], ["created_at", "2023-12-10 23:09:56.991132"], ["updated_at", "2023-12-10 23:09:56.991132"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Manitoba"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.6ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Manitoba"], ["gst", 0.05], ["pst", 0.07], ["created_at", "2023-12-10 23:09:57.003237"], ["updated_at", "2023-12-10 23:09:57.003237"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "New Brunswick"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "New Brunswick"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-10 23:09:57.016010"], ["updated_at", "2023-12-10 23:09:57.016010"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Newfoundland and Labrador"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Newfoundland and Labrador"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-10 23:09:57.028127"], ["updated_at", "2023-12-10 23:09:57.028127"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (3.8ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Northwest Territories"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.4ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Northwest Territories"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-10 23:09:57.040920"], ["updated_at", "2023-12-10 23:09:57.040920"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Nova Scotia"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nova Scotia"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-10 23:09:57.053395"], ["updated_at", "2023-12-10 23:09:57.053395"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Nunavut"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.4ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Nunavut"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-10 23:09:57.065675"], ["updated_at", "2023-12-10 23:09:57.065675"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Ontario"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Ontario"], ["gst", 0.05], ["pst", 0.08], ["created_at", "2023-12-10 23:09:57.078047"], ["updated_at", "2023-12-10 23:09:57.078047"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Prince Edward Island"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Prince Edward Island"], ["gst", 0.05], ["pst", 0.1], ["created_at", "2023-12-10 23:09:57.090263"], ["updated_at", "2023-12-10 23:09:57.090263"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (3.9ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Quebec"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.5ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Quebec"], ["gst", 0.05], ["pst", 0.09975], ["created_at", "2023-12-10 23:09:57.103976"], ["updated_at", "2023-12-10 23:09:57.103976"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Saskatchewan"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (0.7ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Saskatchewan"], ["gst", 0.05], ["pst", 0.06], ["created_at", "2023-12-10 23:09:57.121161"], ["updated_at", "2023-12-10 23:09:57.121161"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProvinceTax Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "province_taxes" WHERE "province_taxes"."name" = ? LIMIT ?[0m  [["name", "Yukon"], ["LIMIT", 1]]
+  [1m[36mProvinceTax Create (1.1ms)[0m  [1m[32mINSERT INTO "province_taxes" ("name", "gst", "pst", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Yukon"], ["gst", 0.05], ["pst", 0.0], ["created_at", "2023-12-10 23:09:57.136353"], ["updated_at", "2023-12-10 23:09:57.136353"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/admin/login" for 127.0.0.1 at 2023-12-10 17:10:09 -0600
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdminUser Update (3.5ms)[0m  [1m[33mUPDATE "admin_users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?[0m  [["remember_created_at", "2023-12-10 23:10:22.020895"], ["updated_at", "2023-12-10 23:10:22.021672"], ["id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/admin
+Completed 303 See Other in 12261ms (ActiveRecord: 8.3ms | Allocations: 24962)
+
+
+Started GET "/admin" for 127.0.0.1 at 2023-12-10 17:10:22 -0600
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mStoreInfo Load (1.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb (Duration: 560.4ms | Allocations: 17854)
+Completed 200 OK in 675ms (Views: 567.4ms | ActiveRecord: 2.4ms | Allocations: 21743)
+
+
+Started GET "/admin/store_infos" for 127.0.0.1 at 2023-12-10 17:10:33 -0600
+Processing by Admin::StoreInfosController#index as HTML
+  [1m[36mStoreInfo Load (0.5ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" desc LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/resource/index.html.arb (Duration: 754.3ms | Allocations: 39609)
+Completed 200 OK in 855ms (Views: 764.3ms | ActiveRecord: 1.9ms | Allocations: 43851)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2023-12-10 17:10:41 -0600
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb
+  Rendered /root/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.1.0/app/views/active_admin/page/index.html.arb (Duration: 519.5ms | Allocations: 15489)
+Completed 200 OK in 554ms (Views: 522.2ms | ActiveRecord: 1.4ms | Allocations: 18041)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:10:52 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 11152.4ms | Allocations: 9691)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 272)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 11230.2ms | Allocations: 25549)
+  Rendered layout layouts/application.html.erb (Duration: 11711.2ms | Allocations: 47671)
+Completed 200 OK in 11740ms (Views: 11705.6ms | ActiveRecord: 8.2ms | Allocations: 48877)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-10 17:11:14 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 380)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 17.9ms | Allocations: 1970)
+  Rendered layout layouts/application.html.erb (Duration: 125.5ms | Allocations: 9173)
+Completed 500 Internal Server Error in 388ms (ActiveRecord: 2.4ms | Allocations: 18082)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass
+
+'.freeze;               @categories.each do |category| 
+                                   ^^^^^):
+    79:             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="q" value="<%= params[:search] %>">
+    80:             <select class="form-select" aria-label="Default select example" id="category" name="category">
+    81:               <option <% if  params[:category].blank? %> selected <% end %>>All Categories</option>
+    82:               <% @categories.each do |category| %>
+    83:                 <option value="<%= category.name %>" <% if params[:category] == category.name.to_s %> selected <% end %>><%= category.name %></option>
+    84:               <% end %>
+    85:             </select>
+  
+app/views/layouts/application.html.erb:82
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:11:17 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.6ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 34.3ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 162.5ms | Allocations: 9235)
+Completed 200 OK in 200ms (Views: 162.1ms | ActiveRecord: 3.2ms | Allocations: 10576)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2023-12-10 17:11:29 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 265)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 670)
+  Rendered layout layouts/application.html.erb (Duration: 117.8ms | Allocations: 7814)
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 2.0ms | Allocations: 10567)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass
+
+'.freeze;               @categories.each do |category| 
+                                   ^^^^^):
+    79:             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="q" value="<%= params[:search] %>">
+    80:             <select class="form-select" aria-label="Default select example" id="category" name="category">
+    81:               <option <% if  params[:category].blank? %> selected <% end %>>All Categories</option>
+    82:               <% @categories.each do |category| %>
+    83:                 <option value="<%= category.name %>" <% if params[:category] == category.name.to_s %> selected <% end %>><%= category.name %></option>
+    84:               <% end %>
+    85:             </select>
+  
+app/views/layouts/application.html.erb:82
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:11:49 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 30.6ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 153.0ms | Allocations: 9235)
+Completed 200 OK in 189ms (Views: 154.6ms | ActiveRecord: 2.4ms | Allocations: 10421)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:12:40 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 10.9ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 80.7ms | Allocations: 12112)
+  Rendered layout layouts/application.html.erb (Duration: 507.7ms | Allocations: 34074)
+Completed 200 OK in 648ms (Views: 517.6ms | ActiveRecord: 129.4ms | Allocations: 41237)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-10 17:12:57 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 375)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 1925)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 135.9ms | Allocations: 7005)
+Completed 200 OK in 188ms (Views: 142.0ms | ActiveRecord: 3.7ms | Allocations: 11587)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2023-12-10 17:13:01 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 265)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 670)
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 110.2ms | Allocations: 5629)
+Completed 200 OK in 153ms (Views: 111.2ms | ActiveRecord: 3.5ms | Allocations: 8352)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:19:31 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (39.4ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (3.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 302)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 123.7ms | Allocations: 5469)
+Completed 200 OK in 240ms (Views: 130.1ms | ActiveRecord: 73.2ms | Allocations: 9226)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:24:06 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 111)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 135.4ms | Allocations: 5087)
+Completed 200 OK in 178ms (Views: 137.3ms | ActiveRecord: 4.3ms | Allocations: 7799)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:28:18 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 9.7ms | Allocations: 454)
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 425.0ms | Allocations: 23181)
+Completed 200 OK in 593ms (Views: 444.0ms | ActiveRecord: 91.0ms | Allocations: 38783)
+
+
+Started GET "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:28:41 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products/2/add_to_cart"):
+  
+Started GET "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:29:32 -0600
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:29:45 -0600
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:29:45 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products/2/add_to_cart"):
+  
+Processing by ProductsController#show as HTML
+Processing by IndicesController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mStoreInfo Load (9.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 21.4ms | Allocations: 6343)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 6445)
+Completed 500 Internal Server Error in 202ms (ActiveRecord: 25.2ms | Allocations: 25799)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `product' for #<ActionView::Base:0x00000000063628>
+
+'.freeze; @output_buffer.append=( button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: 'btn btn-primary text-light', onclick: "refreshPage()" );
+                                                                                    ^^^^^^^
+Did you mean?  @product):
+    1: <h1><%= @product.name %></h1>
+    2: <p><%= @product.description %></p>
+    3: <p><%= number_to_currency(@product.price_cents / 100) %></p>
+    4: <%= button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: 'btn btn-primary text-light', onclick: "refreshPage()" %>
+  
+app/views/products/show.html.erb:4
+  Rendered products/_product.html.erb (Duration: 227.2ms | Allocations: 175518)
+  Rendered products/_product.html.erb (Duration: 2.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 451.5ms | Allocations: 316402)
+  Rendered layout layouts/application.html.erb (Duration: 863.4ms | Allocations: 387338)
+Completed 200 OK in 1020ms (Views: 886.9ms | ActiveRecord: 110.3ms | Allocations: 404402)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:29:49 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 31.2ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 155.5ms | Allocations: 9215)
+Completed 200 OK in 187ms (Views: 155.7ms | ActiveRecord: 2.8ms | Allocations: 10526)
+
+
+Started POST "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:29:55 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 45ms (ActiveRecord: 2.1ms | Allocations: 2745)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:29:56 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.9ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 136.1ms | Allocations: 9606)
+Completed 200 OK in 168ms (Views: 136.3ms | ActiveRecord: 3.2ms | Allocations: 10874)
+
+
+Started POST "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:30:01 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 34ms (ActiveRecord: 2.0ms | Allocations: 1761)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:30:02 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 26.3ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 142.9ms | Allocations: 9567)
+Completed 200 OK in 174ms (Views: 143.2ms | ActiveRecord: 2.3ms | Allocations: 10938)
+
+
+Started POST "/products/1/add_to_cart" for 127.0.0.1 at 2023-12-10 17:30:08 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 36ms (ActiveRecord: 1.7ms | Allocations: 1745)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:30:09 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 26.2ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 145.2ms | Allocations: 9918)
+Completed 200 OK in 175ms (Views: 145.5ms | ActiveRecord: 2.7ms | Allocations: 11350)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:30:13 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 11.1ms | Allocations: 6151)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 6234)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 3.5ms | Allocations: 9158)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `product' for #<ActionView::Base:0x00000000063a60>
+
+'.freeze; @output_buffer.append=( button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: 'btn btn-primary text-light', onclick: "refreshPage()" );
+                                                                                    ^^^^^^^
+Did you mean?  @product):
+    1: <h1><%= @product.name %></h1>
+    2: <p><%= @product.description %></p>
+    3: <p><%= number_to_currency(@product.price_cents / 100) %></p>
+    4: <%= button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: 'btn btn-primary text-light', onclick: "refreshPage()" %>
+  
+app/views/products/show.html.erb:4
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:30:43 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.6ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (12.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 10.3ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 85.5ms | Allocations: 12108)
+  Rendered layout layouts/application.html.erb (Duration: 485.7ms | Allocations: 34811)
+Completed 200 OK in 587ms (Views: 484.9ms | ActiveRecord: 89.5ms | Allocations: 42158)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:30:59 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 8.6ms | Allocations: 504)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 148.5ms | Allocations: 6307)
+Completed 200 OK in 225ms (Views: 154.3ms | ActiveRecord: 3.6ms | Allocations: 10453)
+
+
+Started POST "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:31:11 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 47ms (ActiveRecord: 2.4ms | Allocations: 2782)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:31:12 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (1.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 238)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 122.4ms | Allocations: 5896)
+Completed 200 OK in 161ms (Views: 123.7ms | ActiveRecord: 4.1ms | Allocations: 8815)
+
+
+Started DELETE "/products/2/remove_from_cart" for 127.0.0.1 at 2023-12-10 17:31:18 -0600
+Processing by ProductsController#remove_from_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:28:in `remove_from_cart'
+No template found for ProductsController#remove_from_cart, rendering head :no_content
+Completed 204 No Content in 36ms (ActiveRecord: 1.7ms | Allocations: 2039)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:31:19 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 238)
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 192.0ms | Allocations: 5544)
+Completed 200 OK in 277ms (Views: 238.6ms | ActiveRecord: 3.5ms | Allocations: 8315)
+
+
+Started POST "/products/2/add_to_cart" for 127.0.0.1 at 2023-12-10 17:31:22 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 34ms (ActiveRecord: 2.1ms | Allocations: 1729)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:31:23 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 238)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 140.0ms | Allocations: 5895)
+Completed 200 OK in 180ms (Views: 141.0ms | ActiveRecord: 3.7ms | Allocations: 8829)
+
+
+Started DELETE "/products/2/remove_from_cart" for 127.0.0.1 at 2023-12-10 17:31:32 -0600
+Processing by ProductsController#remove_from_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:28:in `remove_from_cart'
+No template found for ProductsController#remove_from_cart, rendering head :no_content
+Completed 204 No Content in 34ms (ActiveRecord: 1.7ms | Allocations: 1858)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2023-12-10 17:31:33 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 238)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 121.4ms | Allocations: 5544)
+Completed 200 OK in 161ms (Views: 122.4ms | ActiveRecord: 4.1ms | Allocations: 8324)
+
+
+Started GET "/" for 127.0.0.1 at 2023-12-10 17:33:33 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 258)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 23.6ms | Allocations: 4887)
+  Rendered layout layouts/application.html.erb (Duration: 134.5ms | Allocations: 9579)
+Completed 200 OK in 167ms (Views: 134.6ms | ActiveRecord: 2.8ms | Allocations: 10885)
+
+
+Started GET "/?search=ac&category=All%20Categories" for 127.0.0.1 at 2023-12-10 17:36:10 -0600
+Started GET "/?search=ac&category=All%20Categories" for 127.0.0.1 at 2023-12-10 17:36:10 -0600
+Processing by IndicesController#index as HTML
+  Parameters: {"search"=>"ac", "category"=>"All Categories"}
+  [1m[36mStoreInfo Load (1.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "All Categories"], ["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:11:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE (LOWER(name) LIKE LOWER('%ac%') OR LOWER(description) LIKE LOWER('%ac%'))[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 23.5ms | Allocations: 3983)
+Processing by IndicesController#index as HTML
+  Parameters: {"search"=>"ac", "category"=>"All Categories"}
+  [1m[36mStoreInfo Load (9.4ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "All Categories"], ["LIMIT", 1]]
+  ↳ app/controllers/indices_controller.rb:11:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE (LOWER(name) LIKE LOWER('%ac%') OR LOWER(description) LIKE LOWER('%ac%'))[0m
+  Rendered layout layouts/application.html.erb (Duration: 142.5ms | Allocations: 12269)
+  ↳ app/views/indices/index.html.erb:24
+Completed 200 OK in 179ms (Views: 143.3ms | ActiveRecord: 4.3ms | Allocations: 14813)
+
+
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 26.1ms | Allocations: 5057)
+  Rendered layout layouts/application.html.erb (Duration: 135.6ms | Allocations: 9753)
+Completed 200 OK in 178ms (Views: 137.3ms | ActiveRecord: 16.4ms | Allocations: 14799)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:20:50 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 79.8ms | Allocations: 1630)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 272)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 192.2ms | Allocations: 18150)
+  Rendered layout layouts/application.html.erb (Duration: 3988.7ms | Allocations: 84713)
+Completed 200 OK in 4577ms (Views: 4120.2ms | ActiveRecord: 91.4ms | Allocations: 105829)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:34:36 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (43.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 313)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 28.4ms | Allocations: 5127)
+  Rendered layout layouts/application.html.erb (Duration: 139.3ms | Allocations: 9589)
+Completed 200 OK in 11294ms (Views: 137.5ms | ActiveRecord: 75.8ms | Allocations: 20005)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:34:48 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 29.2ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 141.5ms | Allocations: 9216)
+Completed 200 OK in 171ms (Views: 141.5ms | ActiveRecord: 2.9ms | Allocations: 10497)
+
+
+Started GET "/products" for ::1 at 2023-12-11 17:37:54 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:6
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:6
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 358)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 131.2ms | Allocations: 8015)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 240.6ms | Allocations: 13114)
+Completed 200 OK in 281ms (Views: 243.3ms | ActiveRecord: 3.7ms | Allocations: 14857)
+
+
+Started GET "/products" for ::1 at 2023-12-11 17:40:45 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:6
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:6
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 252)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 5165)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 148.0ms | Allocations: 10125)
+Completed 200 OK in 180ms (Views: 147.4ms | ActiveRecord: 3.7ms | Allocations: 11411)
+
+
+Started GET "/products" for ::1 at 2023-12-11 17:42:40 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:6
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:6
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 252)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 27.1ms | Allocations: 5154)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:82
+  Rendered layout layouts/application.html.erb (Duration: 151.2ms | Allocations: 10112)
+Completed 200 OK in 185ms (Views: 149.7ms | ActiveRecord: 4.5ms | Allocations: 11248)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:42:50 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 251)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 33.5ms | Allocations: 4875)
+  Rendered layout layouts/application.html.erb (Duration: 157.2ms | Allocations: 9216)
+Completed 200 OK in 191ms (Views: 157.8ms | ActiveRecord: 3.4ms | Allocations: 10363)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:43:37 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (2.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 13.1ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 86.7ms | Allocations: 12112)
+  Rendered layout layouts/application.html.erb (Duration: 564.6ms | Allocations: 34136)
+Completed 200 OK in 780ms (Views: 651.4ms | ActiveRecord: 126.2ms | Allocations: 41246)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:44:10 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 10.6ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 84.1ms | Allocations: 12112)
+  Rendered layout layouts/application.html.erb (Duration: 502.7ms | Allocations: 34190)
+Completed 200 OK in 721ms (Views: 591.7ms | ActiveRecord: 122.0ms | Allocations: 41306)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:44:55 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (7.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 12.8ms | Allocations: 530)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 161.7ms | Allocations: 12135)
+  Rendered layout layouts/application.html.erb (Duration: 670.7ms | Allocations: 34153)
+Completed 200 OK in 917ms (Views: 753.4ms | ActiveRecord: 137.0ms | Allocations: 41266)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:46:37 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:15
+  [1m[36mProduct Load (2.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:24
+  Rendered products/_product.html.erb (Duration: 12.0ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 87.0ms | Allocations: 12112)
+  Rendered layout layouts/application.html.erb (Duration: 593.3ms | Allocations: 34131)
+Completed 200 OK in 821ms (Views: 694.6ms | ActiveRecord: 126.1ms | Allocations: 41244)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:49:03 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:11
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 11.7ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 123.5ms | Allocations: 12123)
+  Rendered layout layouts/application.html.erb (Duration: 569.5ms | Allocations: 34140)
+Completed 200 OK in 736ms (Views: 543.1ms | ActiveRecord: 163.0ms | Allocations: 41262)
+
+
+Started GET "/" for ::1 at 2023-12-11 17:51:29 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:11
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 14.4ms | Allocations: 528)
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 96.3ms | Allocations: 12125)
+  Rendered layout layouts/application.html.erb (Duration: 607.4ms | Allocations: 34143)
+Completed 200 OK in 774ms (Views: 620.3ms | ActiveRecord: 134.4ms | Allocations: 41254)
+
+

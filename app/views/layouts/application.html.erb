@@ -23,9 +23,9 @@
   <body>
     <p style="color: green"><%= notice %></p>
 
-    <nav class="navbar navbar-expand-lg bg-primary-subtle">
+    <nav class="navbar bg-dark border-bottom border-body">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><%= @store_info['name'] %></a>
+        <a class="navbar-brand" style="color: white"><%= @store_info['name'] %></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,7 +83,7 @@
                 <option value="<%= category.name %>" <% if params[:category] == category.name.to_s %> selected <% end %>><%= category.name %></option>
               <% end %>
             </select>
-            <button class="btn btn-outline-success" type="submit" id="searchbtn">Search Products</button>
+            <button class="btn btn-outline-light" type="submit" id="searchbtn">Search Products</button>
             <script>
               function handleSearch(event) {
                 event.preventDefault();

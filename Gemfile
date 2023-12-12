@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
-gem 'bootstrap', '~> 5.1.3'  # Use the latest version
+# gem 'bootstrap', '~> 5.1.3'  # Use the latest version
 
 # sassc https://github.com/sass/sassc-rails/issues/114
 gem 'sassc-rails'
