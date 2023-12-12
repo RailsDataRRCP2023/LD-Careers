@@ -17,7 +17,9 @@
     <b>Province:</b>
     <select id="province">
         <% @taxes.each do |tax| %>
-            <option value="<%= tax['name'] %>" data-gst="<%= tax['gst'] %>" data-pst="<%= tax['pst'] %>"><%= tax['name'] %></option>
+            <option value="<%= tax['name'] %>" data-gst="<%= tax['gst'] %>" data-pst="<%= tax['pst'] %>" <% if params[:province] == tax['name'] %> selected <% end %>>
+                <%= tax['name'] %>
+            </option>
         <% end %>
     </select>
 </p>
@@ -30,9 +32,9 @@
         const province = document.getElementById('province').value;
         const gst = document.querySelector(`option[value="${province}"]`).dataset.gst;
         const pst = document.querySelector(`option[value="${province}"]`).dataset.pst;
-        const subtotal = <%= subtotal %>;
-        const gstAmount = subtotal * gst;
-        const pstAmount = subtotal * pst;
+        const subtotal = <%= subtotal / 100 %>;
+        const gstAmount = parseFloat(subtotal) * parseFloat(gst);
+        const pstAmount = parseFloat(subtotal) * parseFloat(pst);
         const total = parseFloat(subtotal) + parseFloat(gstAmount) + parseFloat(pstAmount);
         document.getElementById('gst').innerHTML = gstAmount.toFixed(2);
         document.getElementById('pst').innerHTML = pstAmount.toFixed(2);
@@ -40,12 +42,11 @@
     }
 
     document.getElementById('province').addEventListener('change', function(event) {
+        window.location.href = '?province=' + event.target.value;
         calculateTotal();
     });
 
     calculateTotal();
 </script>
 
-<%= form_with url:checkout_create_path(1), remote: false do %>
-    <%= button_tag '💳 Buy Now' %>
-<% end %>
+<%= button_to '💳 Buy Now', checkout_create_path(1), method: :post, class: 'btn btn-success', data: {turbo: false} %>
