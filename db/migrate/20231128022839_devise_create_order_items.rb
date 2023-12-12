@@ -5,7 +5,7 @@ class DeviseCreateOrderItems < ActiveRecord::Migration[7.1]
     create_table :order_items do |t|
       ## Database authenticatable
       t.integer :quantity,              null: false, default: 0
-      t.integer :price_cents,              null: false, default: 0
+      t.integer :unit_price_cents,              null: false, default: 0
       t.references :product, null: false, foreign_key: true
       t.references :order, null: false, foreign_key: true
 

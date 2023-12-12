@@ -15,24 +15,26 @@ ActiveAdmin.register Order do
   #   permitted
   # end
   
-    permit_params :id, :order_date, :total_cents, :customer_id, :status, :customer_id
+    permit_params :id, :order_date, :total_price_cents, :customer_id, :status, :customer_id, :stripe_session_id
     
     index do
       selectable_column
       id_column
       column :order_date
-      column :total_cents
+      column :total_price_cents
       column :customer_id
       column :status
+      column :stripe_session_id
       actions
     end
 
     form do |f|
       f.inputs "Order Details" do
         f.input :order_date
-        f.input :total_cents
+        f.input :total_price_cents
         f.input :customer_id
         f.input :status
+        f.input :stripe_session_id
       end
       f.actions
     end

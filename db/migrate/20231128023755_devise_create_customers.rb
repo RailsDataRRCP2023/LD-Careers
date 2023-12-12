@@ -11,6 +11,9 @@ class DeviseCreateCustomers < ActiveRecord::Migration[7.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      # PeePeePooPoo
+      t.references :province_tax, null: true, foreign_key: true, default: nil
+
       ## Rememberable
       t.datetime :remember_created_at
 

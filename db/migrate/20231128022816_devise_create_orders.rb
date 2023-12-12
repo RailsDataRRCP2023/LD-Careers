@@ -4,7 +4,8 @@ class DeviseCreateOrders < ActiveRecord::Migration[7.1]
   def change
     create_table :orders do |t|
       ## Database authenticatable
-      t.string :status,              null: false, default: "pending"
+      t.string :status,              null: false
+      t.string :stripe_session_id,              null: false, default: ""
       t.integer :total_price_cents,              null: false, default: 0
       t.references :customer, null: false, foreign_key: true
 
