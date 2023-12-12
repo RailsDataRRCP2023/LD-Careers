@@ -1,0 +1,8 @@
+Boo....
+
+Order canceled:
+<%= @order.id %>
+<%= @order.created_at.strftime("%B %d, %Y") %>
+<%= @order.status %>
+<%= number_to_currency(@order.total / 100) %>
+<%= link_to 'Details', order %>
