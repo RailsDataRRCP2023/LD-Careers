@@ -1,0 +1,17 @@
+
+<h1>Order Details</h1>
+
+<p><b>Order ID:</b> <%= @order.id %></p>
+
+<p><b>Order Date:</b> <%= @order.created_at.strftime("%B %d, %Y") %></p>
+
+<p><b>Order Status:</b> <%= @order.status %></p>
+
+<p><b>Order Total:</b> <%= number_to_currency(@order.total_price_cents / 100) %></p>
+
+<p><b>Order Items:</b><br>
+    <% @order.order_items.each do |order_item| %>
+        <p><%= order_item.product.name %> x <%= order_item.quantity %> = <%= number_to_currency(order_item.product.price_cents * order_item.quantity / 100) %></p>
+    <% end %>
+</p>
+
