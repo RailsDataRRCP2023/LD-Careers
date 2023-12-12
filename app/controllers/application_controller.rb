@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
     def set_common_variables
       @store_info = ::StoreInfo.last
+      @categories = Category.all
       @cart = session[:cart] || {}
     end
 end
