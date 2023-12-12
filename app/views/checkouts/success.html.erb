@@ -1,1 +1,8 @@
 YAY!
+
+See your order details below:
+<%= @order.id %>
+<%= @order.created_at.strftime("%B %d, %Y") %>
+<%= @order.status %>
+<%= number_to_currency(@order.total_price_cents / 100) %>
+<%= link_to 'Details', @order %>
