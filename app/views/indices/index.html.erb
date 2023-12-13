@@ -1,15 +1,12 @@
-
-<div class="col-12 col-md-8">
-  <h1><%= @store_info['name'] %></h1>
-  <p><%= @store_info['about'] %></p>
-
+<body style="background-color:black;">
+<div class="col-12 col-md-8" style="padding: 20px;">
+<div class="card text-white bg-dark mb-3" style="max-width: 300%; padding: 20px; position: center; left: 250px">
+  <div class="card-body">
+    <h5 class="card-title"><%= @store_info['name'] %></h5>
+    <p class="card-text"><%= @store_info['about'] %></p>
+  </div>
 <div class="col-12">
   <h2><a href="<%= products_path %>">Products</a></h2>
-  <div class="row">
-    <% @products.each do |product| %>
-      <%= render partial: 'products/product', locals: { product: product } %>
-    <% end %>
-  </div>
 <div class="card" style="width: 100%;">
   <div class="card-header">
     Contact
@@ -22,4 +19,5 @@
 </div>
   </div>
 </div>
+</body>
 

@@ -1,10 +1,20 @@
-<h1>Products</h1>
+<body style="background-color:black; ">
+<h1 class="text-white">Products</h1>
 
-<div class="col-12">
-    <h2><a href="<%= products_path %>">Products</a></h2>
+<div class="col-12 text-white">
+<div class="card text-white bg-secondary mb-3" style="max-width: 11rem;">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb card-text">
+    <li class="breadcrumb-item card-text"><a href="<%= indices_path %>">Home</a></li>
+    <li class="breadcrumb-item active card-text" aria-current="page">Products</li>
+  </ol>
+</nav>
+  </div>
+</div>
     <div class="row">
     <% @products.each do |product| %>
         <%= render partial: 'product', locals: { product: product } %>
     <% end %>
     </div>
 </div>
+</body>
