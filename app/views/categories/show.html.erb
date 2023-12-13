@@ -1,8 +1,20 @@
-<h1><%= @category.name %></h1>
-<p><%= @category.description %></p>
-<h3>Products</h3>
+<body style="background-color:black; ">
+<h1 class="text-white"><%= @category.name %></h1>
+<div class="col-12 text-white">
+<div class="card text-white bg-secondary mb-3" style="max-width: 13rem;">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb card-text">
+    <li class="breadcrumb-item card-text"><a href="<%= indices_path %>">Home</a></li>
+    <li class="breadcrumb-item active card-text" aria-current="page">Job Posting</li>
+  </ol>
+</nav>
+  </div>
+</div>
+<p class="text-white"><%= @category.description %></p>
+<h3 class="text-white">Products</h3>
 <ul>
   <% @category.products.each do |product| %>
     <%= render partial: 'products/product', locals: { product: product } %>
   <% end %>
 </ul>
+</body>

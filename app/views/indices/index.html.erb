@@ -5,8 +5,26 @@
     <h5 class="card-title"><%= @store_info['name'] %></h5>
     <p class="card-text"><%= @store_info['about'] %></p>
   </div>
-<div class="col-12">
-  <h2><a href="<%= products_path %>">Products</a></h2>
+  <div class="col-12">
+  <h2><a href="<%= products_path %>"> View All Products</a></h2>
+  </div>
+  <div>
+  <h1>Categories</h1>
+
+<% @categories.each do |category| %>
+  <h2>
+    <%= link_to category.name, category %>
+  </h2>
+    <p><%= category.description %></p>
+    <ul>
+      <% category.products.each do |product| %>
+        <%= render partial: 'products/product', locals: { product: product } %>
+      <% end %>
+    </ul>
+    <br><br>
+<% end %>
+</div>
+
 <div class="card" style="width: 100%;">
   <div class="card-header">
     Contact

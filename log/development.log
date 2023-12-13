@@ -3162,3 +3162,637 @@ Processing by ProductsController#index as HTML
   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
   ↳ app/views/layouts/application.html.erb:83
   Rendered layout layouts/application.html.erb (Duration: 254.8ms | Allocations: 35808)
+Completed 200 OK in 328ms (Views: 260.0ms | ActiveRecord: 48.0ms | Allocations: 42993)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-12-12 18:58:05 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (0.5ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 5.3ms | Allocations: 567)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 48.1ms | Allocations: 12984)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 316.0ms | Allocations: 35807)
+Completed 200 OK in 378ms (Views: 320.7ms | ActiveRecord: 46.7ms | Allocations: 42997)
+
+
+Started GET "/indices" for 127.0.0.1 at 2023-12-12 18:58:17 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.4ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  Rendered indices/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 285)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 64.3ms | Allocations: 5506)
+Completed 200 OK in 90ms (Views: 68.1ms | ActiveRecord: 1.0ms | Allocations: 7203)
+
+
+Started GET "/indices" for 127.0.0.1 at 2023-12-13 13:38:20 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (48.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (8.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:11
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/indices/index.html.erb:17
+  Rendered products/_product.html.erb (Duration: 12.1ms | Allocations: 597)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/views/indices/index.html.erb:17
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/indices/index.html.erb:17
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  ↳ app/views/indices/index.html.erb:17
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 134.4ms | Allocations: 16292)
+  Rendered layout layouts/application.html.erb (Duration: 672.5ms | Allocations: 38465)
+Completed 200 OK in 821ms (Views: 686.7ms | ActiveRecord: 90.0ms | Allocations: 44986)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:38:53 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.6ms | Allocations: 375)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 22.1ms | Allocations: 1915)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 154.8ms | Allocations: 7098)
+Completed 200 OK in 219ms (Views: 161.7ms | ActiveRecord: 4.8ms | Allocations: 10628)
+
+
+Started GET "/indices" for 127.0.0.1 at 2023-12-13 13:41:34 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:14
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 8.5ms | Allocations: 525)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 2.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 87.7ms | Allocations: 16463)
+  Rendered layout layouts/application.html.erb (Duration: 472.8ms | Allocations: 38636)
+Completed 200 OK in 600ms (Views: 478.2ms | ActiveRecord: 75.5ms | Allocations: 45725)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-12-13 13:42:11 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 347)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 39.6ms | Allocations: 5680)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 176.5ms | Allocations: 10882)
+Completed 200 OK in 235ms (Views: 180.7ms | ActiveRecord: 4.7ms | Allocations: 12641)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-12-13 13:43:19 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (1.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 1.5ms | Allocations: 252)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 30.8ms | Allocations: 5165)
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 176.5ms | Allocations: 10263)
+Completed 200 OK in 217ms (Views: 176.2ms | ActiveRecord: 4.8ms | Allocations: 11419)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-12-13 13:43:29 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 252)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 31.2ms | Allocations: 5168)
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 152.4ms | Allocations: 10273)
+Completed 200 OK in 184ms (Views: 151.8ms | ActiveRecord: 3.5ms | Allocations: 11459)
+
+
+Started POST "/products/1/add_to_cart" for 127.0.0.1 at 2023-12-13 13:43:30 -0600
+Started POST "/products/1/add_to_cart" for 127.0.0.1 at 2023-12-13 13:43:30 -0600
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Processing by ProductsController#add_to_cart as TURBO_STREAM
+Completed 204 No Content in 55ms (ActiveRecord: 2.0ms | Allocations: 3216)
+
+
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `add_to_cart'
+No template found for ProductsController#add_to_cart, rendering head :no_content
+Completed 204 No Content in 33ms (ActiveRecord: 1.9ms | Allocations: 1593)
+
+
+Started GET "/indices" for 127.0.0.1 at 2023-12-13 13:43:51 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.4ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:14
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 38.5ms | Allocations: 298)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 92.1ms | Allocations: 7321)
+  Rendered layout layouts/application.html.erb (Duration: 255.2ms | Allocations: 11896)
+Completed 200 OK in 302ms (Views: 251.7ms | ActiveRecord: 8.1ms | Allocations: 13100)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:44:14 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.2ms | Allocations: 375)
+  Rendered products/_product.html.erb (Duration: 1.4ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 22.5ms | Allocations: 1913)
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 165.8ms | Allocations: 7097)
+Completed 200 OK in 239ms (Views: 173.8ms | ActiveRecord: 4.2ms | Allocations: 10560)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:47:13 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 9.8ms | Allocations: 606)
+  Rendered products/_product.html.erb (Duration: 13.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 51.5ms | Allocations: 2244)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 483.7ms | Allocations: 25149)
+Completed 200 OK in 640ms (Views: 501.8ms | ActiveRecord: 120.7ms | Allocations: 41366)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:47:41 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 13.2ms | Allocations: 606)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 1.1ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 48.1ms | Allocations: 2248)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 534.8ms | Allocations: 25231)
+Completed 200 OK in 699ms (Views: 555.1ms | ActiveRecord: 88.3ms | Allocations: 41478)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:49:12 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 10.4ms | Allocations: 566)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 43.1ms | Allocations: 2291)
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 511.2ms | Allocations: 25189)
+Completed 200 OK in 709ms (Views: 535.1ms | ActiveRecord: 135.5ms | Allocations: 41424)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:50:23 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.7ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 17.6ms | Allocations: 566)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 7.1ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 7.1ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 64.2ms | Allocations: 2290)
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 590.2ms | Allocations: 25194)
+Completed 200 OK in 779ms (Views: 670.3ms | ActiveRecord: 67.5ms | Allocations: 41420)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:51:06 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.8ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 9.5ms | Allocations: 566)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 38.2ms | Allocations: 2286)
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 406.4ms | Allocations: 25029)
+Completed 200 OK in 580ms (Views: 425.0ms | ActiveRecord: 123.2ms | Allocations: 41218)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2023-12-13 13:51:30 -0600
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 9.2ms | Allocations: 566)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered categories/show.html.erb within layouts/application (Duration: 38.7ms | Allocations: 2286)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 400.4ms | Allocations: 25183)
+Completed 200 OK in 545ms (Views: 417.7ms | ActiveRecord: 78.2ms | Allocations: 41371)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 13:51:41 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.3ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 502)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 168.9ms | Allocations: 5686)
+Completed 200 OK in 261ms (Views: 176.5ms | ActiveRecord: 5.1ms | Allocations: 9086)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 13:57:40 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (59.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (3.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 597)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 457.6ms | Allocations: 23509)
+Completed 200 OK in 627ms (Views: 478.6ms | ActiveRecord: 111.7ms | Allocations: 37628)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 13:58:35 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 598)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 437.4ms | Allocations: 23505)
+Completed 200 OK in 618ms (Views: 458.5ms | ActiveRecord: 121.9ms | Allocations: 39097)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 13:59:13 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 10.9ms | Allocations: 597)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 529.3ms | Allocations: 23509)
+Completed 200 OK in 702ms (Views: 553.3ms | ActiveRecord: 97.3ms | Allocations: 39097)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 14:02:33 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.2ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 673)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 521.7ms | Allocations: 23584)
+Completed 200 OK in 710ms (Views: 542.7ms | ActiveRecord: 125.2ms | Allocations: 39183)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 14:02:57 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.1ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 670)
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 457.9ms | Allocations: 23577)
+Completed 200 OK in 660ms (Views: 480.8ms | ActiveRecord: 136.2ms | Allocations: 39175)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 14:03:22 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 10.0ms | Allocations: 668)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 437.4ms | Allocations: 23592)
+Completed 200 OK in 619ms (Views: 456.2ms | ActiveRecord: 125.6ms | Allocations: 39184)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-12-13 14:03:45 -0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStoreInfo Load (0.9ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 12.4ms | Allocations: 668)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 507.2ms | Allocations: 23575)
+Completed 200 OK in 678ms (Views: 529.8ms | ActiveRecord: 92.0ms | Allocations: 39125)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-12-13 14:03:51 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 11.4ms | Allocations: 437)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  Rendered products/index.html.erb within layouts/application (Duration: 62.8ms | Allocations: 5659)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:83
+  Rendered layout layouts/application.html.erb (Duration: 185.4ms | Allocations: 10708)
+Completed 200 OK in 245ms (Views: 184.4ms | ActiveRecord: 4.5ms | Allocations: 12100)
+
+
+Started GET "/indices" for 127.0.0.1 at 2023-12-13 14:03:55 -0600
+Processing by IndicesController#index as HTML
+  [1m[36mStoreInfo Load (1.0ms)[0m  [1m[34mSELECT "store_infos".* FROM "store_infos" ORDER BY "store_infos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_common_variables'
+  Rendering layout layouts/application.html.erb
+  Rendering indices/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/indices/index.html.erb:14
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 1.0ms | Allocations: 316)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 2]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 249)
+  Rendered products/_product.html.erb (Duration: 0.9ms | Allocations: 249)
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 0.7ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 250)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  ↳ app/views/indices/index.html.erb:20
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered products/_product.html.erb (Duration: 0.8ms | Allocations: 250)
+  Rendered indices/index.html.erb within layouts/application (Duration: 54.5ms | Allocations: 9159)
+  Rendered layout layouts/application.html.erb (Duration: 165.5ms | Allocations: 13728)
+Completed 200 OK in 240ms (Views: 168.1ms | ActiveRecord: 6.1ms | Allocations: 15406)
+
+

@@ -1,4 +1,20 @@
+<body style="background-color:black;">
+<div class="card text-white bg-secondary mb-3" style="max-width: 27rem; margin: 10px">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb card-text">
+    <li class="breadcrumb-item card-text"><a href="<%= indices_path %>">Home</a></li>
+    <li class="breadcrumb-item card-text"><a href="<%= products_path %>">Job Postings</a></li>
+    <li class="breadcrumb-item active card-text" aria-current="page"><%= @product.name %></li>
+  </ol>
+</nav>
+  </div>
+<div class="card" style="margin: 20px;">
+  <div class="card-header" >
 <h1><%= @product.name %></h1>
-<p><%= @product.description %></p>
-<p><%= number_to_currency(@product.price_cents / 100) %></p>
+</div>
+<div class="card-body">
+<p class="card-title"><%= @product.description %></p>
+<p class="card-text"><%= number_to_currency(@product.price_cents / 100) %></p>
 <%= button_to 'Add to cart', add_to_cart_product_path(@product), method: :post, class: 'btn btn-primary text-light', onclick: "refreshPage()" %>
+</div>
+</body>
